@@ -1,35 +1,65 @@
-'use client'
-
-import { useState } from 'react'
+import { Suspense } from 'react'
+import { createClient } from '@/lib/supabase/server'
 import Link from 'next/link'
-import { campaigns } from '@/data/dummy-campaigns'
 import { CampaignCard } from '@/components/campaigns/campaign-card'
-import { CreateCampaignModal } from '@/components/campaigns/create-campaign-modal'
-import { Button } from '@/components/ui/button'
-import { Plus } from 'lucide-react'
+import { CampaignsHeaderActions } from '@/components/campaigns/campaigns-header-actions'
+import { mapDbCampaignToApp } from '@/lib/mappers'
 
-export default function CampaignsPage() {
-  const [showCreate, setShowCreate] = useState(false)
+export const dynamic = 'force-dynamic'
+
+async function CampaignsList() {
+  const supabase = await createClient()
+  const { data, error } = await supabase
+    .from('campaigns')
+    .select('*')
+    .order('created_at', { ascending: false })
+
+  if (error) {
+    return <div className="p-4 bg-destructive/10 text-destructive rounded-md">Error loading campaigns</div>
+  }
+
+  const mappedCampaigns = data?.map(mapDbCampaignToApp) || []
 
   return (
-    <div className="space-y-4">
-      <div className="flex items-center justify-between">
-        <p className="text-body-small text-muted-foreground">{campaigns.length} campaigns</p>
-        <Button size="sm" onClick={() => setShowCreate(true)}>
-          <Plus className="w-3.5 h-3.5 mr-1.5" />
-          Create Campaign
-        </Button>
+    <>
+      <div className="flex items-center justify-between mb-4">
+        <p className="text-body-small text-muted-foreground">{mappedCampaigns.length} campaigns</p>
+        <CampaignsHeaderActions />
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        {campaigns.map((campaign) => (
+        {mappedCampaigns.map((campaign) => (
           <Link key={campaign.id} href={`/dashboard/campaigns/${campaign.id}`}>
             <CampaignCard campaign={campaign} />
           </Link>
         ))}
       </div>
+    </>
+  )
+}
 
-      <CreateCampaignModal open={showCreate} onClose={() => setShowCreate(false)} />
+function CampaignsSkeleton() {
+  return (
+    <div className="space-y-4">
+      <div className="flex items-center justify-between">
+        <div className="h-4 w-24 bg-muted animate-pulse rounded"></div>
+        <div className="h-9 w-32 bg-muted animate-pulse rounded"></div>
+      </div>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        {[1, 2, 3, 4, 5, 6].map((i) => (
+          <div key={i} className="h-40 bg-muted/50 border border-border animate-pulse rounded-lg"></div>
+        ))}
+      </div>
+    </div>
+  )
+}
+
+export default function CampaignsPage() {
+  return (
+    <div className="space-y-4">
+      <Suspense fallback={<CampaignsSkeleton />}>
+        <CampaignsList />
+      </Suspense>
     </div>
   )
 }

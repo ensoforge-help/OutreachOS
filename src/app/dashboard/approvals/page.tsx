@@ -1,57 +1,72 @@
-'use client'
+import { Suspense } from 'react'
+import { createClient } from '@/lib/supabase/server'
+import { ApprovalsClientView } from '@/components/approvals/approvals-client-view'
+import type { EmailDraft } from '@/types/email'
 
-import { useState } from 'react'
-import { emailDrafts } from '@/data/dummy-emails'
-import { ApprovalCard } from '@/components/approvals/approval-card'
-import { EmptyState } from '@/components/ui/empty-state'
-import { CheckCircle } from 'lucide-react'
+export const dynamic = 'force-dynamic'
 
-export default function ApprovalsPage() {
-  const [drafts, setDrafts] = useState(
-    emailDrafts.filter((e) => e.status === 'pending')
-  )
+async function ApprovalsData() {
+  const supabase = await createClient()
+  
+  const { data, error } = await supabase
+    .from('emails')
+    .select(`
+      *,
+      campaign:campaigns(name),
+      contact:contacts(name, email),
+      business:businesses(name)
+    `)
+    .eq('status', 'pending')
+    .order('created_at', { ascending: false })
 
-  function handleApprove(id: string) {
-    setDrafts((prev) => prev.filter((d) => d.id !== id))
+  if (error) {
+    return <div className="p-4 bg-destructive/10 text-destructive rounded-md">Error loading approvals</div>
   }
 
-  function handleReject(id: string) {
-    setDrafts((prev) => prev.filter((d) => d.id !== id))
-  }
+  // Map to frontend interface
+  const mappedDrafts: EmailDraft[] = (data || []).map((e: any) => ({
+    id: e.id,
+    businessId: e.business_id,
+    businessName: e.business?.name || 'Unknown Business',
+    contactId: e.contact_id,
+    campaignId: e.campaign_id,
+    campaignName: e.campaign?.name || 'Unknown Campaign',
+    contactName: e.contact?.name || undefined,
+    contactEmail: e.contact?.email || '',
+    subject: e.subject,
+    body: e.body,
+    score: e.ai_score || 0,
+    opportunity: e.opportunity_summary || '',
+    status: e.status,
+    scheduledAt: e.scheduled_at,
+    sentAt: e.sent_at,
+    openedAt: e.opened_at,
+    repliedAt: e.replied_at,
+    createdAt: e.created_at,
+  }))
 
-  function handleEdit(id: string, subject: string, body: string) {
-    setDrafts((prev) =>
-      prev.map((d) => (d.id === id ? { ...d, subject, body } : d))
-    )
-  }
+  return <ApprovalsClientView initialDrafts={mappedDrafts} />
+}
 
+function ApprovalsSkeleton() {
   return (
     <div className="space-y-4">
-      <div className="flex items-center gap-2">
-        <span className="text-xs text-muted-foreground">
-          Pending Approval — <span className="text-foreground font-medium">{drafts.length}</span>
-        </span>
+      <div className="h-4 w-32 bg-muted animate-pulse rounded"></div>
+      <div className="space-y-4">
+        {[1, 2, 3].map((i) => (
+          <div key={i} className="h-48 border border-border bg-muted/20 animate-pulse rounded-lg"></div>
+        ))}
       </div>
+    </div>
+  )
+}
 
-      {drafts.length === 0 ? (
-        <EmptyState
-          icon={<CheckCircle className="w-6 h-6 text-emerald-400" />}
-          title="All caught up"
-          description="No pending approvals at the moment."
-        />
-      ) : (
-        <div className="space-y-4">
-          {drafts.map((draft) => (
-            <ApprovalCard
-              key={draft.id}
-              draft={draft}
-              onApprove={() => handleApprove(draft.id)}
-              onReject={() => handleReject(draft.id)}
-              onEdit={(subject, body) => handleEdit(draft.id, subject, body)}
-            />
-          ))}
-        </div>
-      )}
+export default function ApprovalsPage() {
+  return (
+    <div className="space-y-4">
+      <Suspense fallback={<ApprovalsSkeleton />}>
+        <ApprovalsData />
+      </Suspense>
     </div>
   )
 }

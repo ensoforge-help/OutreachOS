@@ -2,6 +2,8 @@
 
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
+import { useDispatch } from 'react-redux'
+import { setUser } from '@/store/slices/authSlice'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
@@ -9,13 +11,41 @@ import { Zap } from 'lucide-react'
 
 export default function LoginPage() {
   const router = useRouter()
+  const dispatch = useDispatch()
+  const [email, setEmail] = useState('admin@outreachos.com')
+  const [password, setPassword] = useState('password')
   const [isLoading, setIsLoading] = useState(false)
+  const [error, setError] = useState<string | null>(null)
 
-  function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
     setIsLoading(true)
-    // Simulate login delay
-    setTimeout(() => router.push('/dashboard'), 600)
+    setError(null)
+
+    try {
+      const res = await fetch('/api/auth/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password }),
+      })
+
+      const data = await res.json()
+
+      if (!res.ok) {
+        throw new Error(data.error || 'Failed to login')
+      }
+
+      // Update Redux state
+      dispatch(setUser(data.user))
+      
+      // Redirect to dashboard
+      router.push('/dashboard')
+      router.refresh()
+    } catch (err: any) {
+      setError(err.message)
+    } finally {
+      setIsLoading(false)
+    }
   }
 
   return (
@@ -44,8 +74,10 @@ export default function LoginPage() {
               id="email"
               type="email"
               placeholder="admin@outreachos.com"
-              defaultValue="admin@outreachos.com"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               className="h-10 bg-card border-border text-foreground placeholder:text-muted-foreground/50"
+              required
             />
           </div>
 
@@ -57,10 +89,18 @@ export default function LoginPage() {
               id="password"
               type="password"
               placeholder="••••••••"
-              defaultValue="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
               className="h-10 bg-card border-border text-foreground"
+              required
             />
           </div>
+
+          {error && (
+            <div className="text-sm text-destructive font-medium text-center p-3 bg-destructive/10 rounded-md border border-destructive/20">
+              {error}
+            </div>
+          )}
 
           <Button
             type="submit"
@@ -77,15 +117,6 @@ export default function LoginPage() {
             )}
           </Button>
         </form>
-
-        <p className="text-center">
-          <button
-            type="button"
-            className="text-xs text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
-          >
-            Forgot password?
-          </button>
-        </p>
       </div>
     </div>
   )

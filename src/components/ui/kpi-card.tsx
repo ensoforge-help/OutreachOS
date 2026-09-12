@@ -13,17 +13,17 @@ interface KpiCardProps {
 export function KpiCard({ label, value, change, changeLabel, trend, icon }: KpiCardProps) {
   return (
     <div className="rounded-lg border border-border bg-card p-4 space-y-2">
-      <div className="flex items-center justify-between">
-        <span className="text-kpi-label">{label}</span>
-        {icon && <span className="text-muted-foreground">{icon}</span>}
+      <div className="flex items-center justify-between gap-2">
+        <span className="text-kpi-label truncate">{label}</span>
+        {icon && <span className="text-muted-foreground shrink-0">{icon}</span>}
       </div>
-      <div className="flex items-end justify-between">
-        <span className="text-kpi-value">
+      <div className="flex items-baseline justify-between gap-2 mt-1">
+        <span className="text-kpi-value truncate">
           {value}
         </span>
         {change !== undefined && (
           <span className={cn(
-            'flex items-center gap-0.5 text-badge font-medium',
+            'flex items-center gap-0.5 text-badge font-medium shrink-0',
             trend === 'up' ? 'text-emerald-400' :
             trend === 'down' ? 'text-red-400' :
             'text-muted-foreground'

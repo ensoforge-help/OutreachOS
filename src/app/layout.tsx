@@ -18,6 +18,8 @@ export const metadata: Metadata = {
   description: "Internal outreach management platform for business discovery, lead enrichment, and email campaigns.",
 }
 
+import { ReduxProvider } from "@/components/providers/redux-provider"
+
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
@@ -25,9 +27,11 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-[#080808]">
-        <TooltipProvider delay={200}>
-          {children}
-        </TooltipProvider>
+        <ReduxProvider>
+          <TooltipProvider delay={200}>
+            {children}
+          </TooltipProvider>
+        </ReduxProvider>
       </body>
     </html>
   )

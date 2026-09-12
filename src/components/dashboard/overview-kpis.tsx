@@ -3,7 +3,7 @@ import { Users, Flame, Clock, Mail, Reply, AlertTriangle } from 'lucide-react'
 
 export function OverviewKpis() {
   return (
-    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+    <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
       <KpiCard
         label="Total Leads"
         value="12,482"
