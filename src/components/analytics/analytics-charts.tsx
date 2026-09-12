@@ -27,7 +27,7 @@ const SCORE_COLORS = ['#22C55E', '#4ADE80', '#A3E635', '#FACC15', '#FB923C', '#E
 function ChartCard({ title, children }: { title: string; children: React.ReactNode }) {
   return (
     <div className="rounded-lg border border-border bg-card p-4">
-      <h3 className="text-sm font-medium text-foreground mb-4">{title}</h3>
+      <h3 className="text-card-title mb-4">{title}</h3>
       <div className="h-[220px]">{children}</div>
     </div>
   )

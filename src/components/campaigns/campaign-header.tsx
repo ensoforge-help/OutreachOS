@@ -11,8 +11,8 @@ export function CampaignHeader({ campaign }: CampaignHeaderProps) {
   return (
     <div className="flex items-center justify-between">
       <div>
-        <h2 className="text-lg font-semibold text-foreground">{campaign.name}</h2>
-        <p className="text-xs text-muted-foreground mt-0.5">
+        <h2 className="text-section-title">{campaign.name}</h2>
+        <p className="text-body-small text-muted-foreground mt-0.5">
           {campaign.category} · {campaign.location}
         </p>
       </div>

@@ -2,9 +2,11 @@
 
 import { usePathname } from 'next/navigation'
 import { PAGE_TITLES } from '@/lib/constants'
-import { Search, Bell } from 'lucide-react'
+import { Search, Bell, Menu } from 'lucide-react'
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
+import { Sheet, SheetContent, SheetTrigger, SheetTitle, SheetHeader } from '@/components/ui/sheet'
+import { Sidebar } from './sidebar'
 import { Avatar, AvatarFallback } from '@/components/ui/avatar'
 import {
   DropdownMenu,
@@ -26,8 +28,21 @@ export function Topbar() {
 
   return (
     <header className="sticky top-0 z-30 flex h-14 items-center justify-between border-b border-border bg-[#080808]/80 backdrop-blur-sm px-6">
-      {/* Left: Page title */}
-      <div>
+      {/* Left: Page title & Mobile Menu */}
+      <div className="flex items-center gap-3">
+        <Sheet>
+          <SheetTrigger render={
+            <Button variant="ghost" size="icon" className="md:hidden">
+              <Menu className="w-5 h-5" />
+            </Button>
+          } />
+          <SheetContent side="left" className="w-[220px] p-0 bg-sidebar border-sidebar-border" showCloseButton={false}>
+            <SheetHeader className="sr-only">
+              <SheetTitle>Navigation Menu</SheetTitle>
+            </SheetHeader>
+            <Sidebar collapsed={false} onToggle={() => {}} className="relative flex w-full border-r-0" />
+          </SheetContent>
+        </Sheet>
         <h1 className="text-page-title">{getTitle()}</h1>
       </div>
 

@@ -3,11 +3,11 @@
 import type { Business } from '@/types/business'
 import type { Contact } from '@/types/contact'
 import {
-  Sheet,
-  SheetContent,
-  SheetHeader,
-  SheetTitle,
-} from '@/components/ui/sheet'
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from '@/components/ui/dialog'
 import { StatusBadge } from '@/components/ui/status-badge'
 import { ScoreBadge } from '@/components/ui/score-badge'
 import { Separator } from '@/components/ui/separator'
@@ -39,7 +39,7 @@ function DetailRow({ icon, label, value }: { icon: React.ReactNode; label: strin
       <span className="text-muted-foreground mt-0.5">{icon}</span>
       <div className="flex-1 min-w-0">
         <span className="text-kpi-label block">{label}</span>
-        <span className="text-body-small text-foreground">{value}</span>
+        <span className="text-body-small text-foreground block break-words">{value}</span>
       </div>
     </div>
   )
@@ -68,11 +68,11 @@ export function LeadDetailDrawer({ business, contact, open, onClose }: LeadDetai
       }
 
   return (
-    <Sheet open={open} onOpenChange={onClose}>
-      <SheetContent className="w-[420px] sm:w-[480px] overflow-y-auto bg-[#0D0D0F] border-border">
-        <SheetHeader>
-          <SheetTitle className="text-section-title">{business.name}</SheetTitle>
-        </SheetHeader>
+    <Dialog open={open} onOpenChange={onClose}>
+      <DialogContent className="w-[95vw] sm:max-w-[600px] max-h-[85vh] overflow-y-auto bg-[#0D0D0F] border-border">
+        <DialogHeader>
+          <DialogTitle className="text-section-title">{business.name}</DialogTitle>
+        </DialogHeader>
 
         <div className="space-y-5 mt-4">
           {/* Business Info */}
@@ -167,7 +167,7 @@ export function LeadDetailDrawer({ business, contact, open, onClose }: LeadDetai
             </div>
           </section>
         </div>
-      </SheetContent>
-    </Sheet>
+      </DialogContent>
+    </Dialog>
   )
 }

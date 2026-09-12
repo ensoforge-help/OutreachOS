@@ -31,15 +31,15 @@ export function ApprovalCard({ draft, onApprove, onReject, onEdit }: ApprovalCar
       {/* Header */}
       <div className="flex items-start justify-between p-4 pb-3">
         <div className="space-y-1">
-          <h3 className="text-sm font-medium text-foreground">{draft.businessName}</h3>
-          <p className="text-xs text-muted-foreground">
+          <h3 className="text-card-title">{draft.businessName}</h3>
+          <p className="text-body-small text-muted-foreground">
             {draft.contactName && `${draft.contactName} · `}{draft.contactEmail}
           </p>
-          <p className="text-xs text-muted-foreground">{draft.campaignName}</p>
+          <p className="text-body-small text-muted-foreground">{draft.campaignName}</p>
         </div>
         <div className="text-right space-y-1">
           <div className="flex items-center gap-1.5">
-            <span className="text-[11px] text-muted-foreground">Lead Score</span>
+            <span className="text-kpi-label">Lead Score</span>
             <ScoreBadge score={draft.score} className="text-sm font-semibold" />
           </div>
         </div>
@@ -48,7 +48,7 @@ export function ApprovalCard({ draft, onApprove, onReject, onEdit }: ApprovalCar
       {/* Opportunity */}
       <div className="mx-4 mb-3 rounded-md bg-primary/5 border border-primary/10 p-2.5 flex items-start gap-2">
         <Lightbulb className="w-3.5 h-3.5 text-primary shrink-0 mt-0.5" />
-        <span className="text-xs text-muted-foreground">{draft.opportunity}</span>
+        <span className="text-body-small text-muted-foreground">{draft.opportunity}</span>
       </div>
 
       <Separator className="bg-border" />
@@ -58,32 +58,32 @@ export function ApprovalCard({ draft, onApprove, onReject, onEdit }: ApprovalCar
         {editing ? (
           <>
             <div className="space-y-1.5">
-              <label className="text-[11px] text-muted-foreground">Subject</label>
+              <label className="text-kpi-label">Subject</label>
               <Input
                 value={subject}
                 onChange={(e) => setSubject(e.target.value)}
-                className="h-8 text-sm bg-[#0D0D0F] border-border"
+                className="h-8 text-body bg-[#0D0D0F] border-border"
               />
             </div>
             <div className="space-y-1.5">
-              <label className="text-[11px] text-muted-foreground">Body</label>
+              <label className="text-kpi-label">Body</label>
               <Textarea
                 value={body}
                 onChange={(e) => setBody(e.target.value)}
                 rows={8}
-                className="text-sm bg-[#0D0D0F] border-border resize-none"
+                className="text-body bg-[#0D0D0F] border-border resize-none"
               />
             </div>
           </>
         ) : (
           <>
             <div>
-              <span className="text-[11px] text-muted-foreground">Subject</span>
-              <p className="text-sm font-medium text-foreground mt-0.5">{draft.subject}</p>
+              <span className="text-kpi-label">Subject</span>
+              <p className="text-body font-medium text-foreground mt-0.5">{draft.subject}</p>
             </div>
             <div>
-              <span className="text-[11px] text-muted-foreground">Body</span>
-              <div className="mt-1 text-xs text-muted-foreground leading-relaxed whitespace-pre-line">
+              <span className="text-kpi-label">Body</span>
+              <div className="mt-1 text-body text-muted-foreground leading-relaxed whitespace-pre-line">
                 {draft.body}
               </div>
             </div>

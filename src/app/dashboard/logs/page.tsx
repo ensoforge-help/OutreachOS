@@ -38,7 +38,7 @@ export default function LogsPage() {
       {/* Filters */}
       <div className="flex items-center gap-3">
         <Select value={typeFilter} onValueChange={(v) => setTypeFilter(v || '')}>
-          <SelectTrigger className="h-8 w-[180px] text-xs bg-card border-border">
+          <SelectTrigger className="h-8 w-[180px] text-body-small bg-card border-border">
             <SelectValue placeholder="Workflow" />
           </SelectTrigger>
           <SelectContent>
@@ -52,7 +52,7 @@ export default function LogsPage() {
         </Select>
 
         <Select value={statusFilter} onValueChange={(v) => setStatusFilter(v || '')}>
-          <SelectTrigger className="h-8 w-[140px] text-xs bg-card border-border">
+          <SelectTrigger className="h-8 w-[140px] text-body-small bg-card border-border">
             <SelectValue placeholder="Status" />
           </SelectTrigger>
           <SelectContent>
@@ -63,28 +63,28 @@ export default function LogsPage() {
           </SelectContent>
         </Select>
 
-        <span className="text-xs text-muted-foreground">{filtered.length} entries</span>
+        <span className="text-body-small text-muted-foreground">{filtered.length} entries</span>
       </div>
 
       {/* Table */}
       <div className="rounded-lg border border-border bg-card overflow-x-auto">
         <Table>
           <TableHeader>
-            <TableRow className="hover:bg-transparent">
-              <TableHead className="text-xs">Timestamp</TableHead>
-              <TableHead className="text-xs">Workflow</TableHead>
-              <TableHead className="text-xs">Campaign</TableHead>
-              <TableHead className="text-xs text-right">Processed</TableHead>
-              <TableHead className="text-xs text-right">Errors</TableHead>
-              <TableHead className="text-xs">Duration</TableHead>
-              <TableHead className="text-xs">Status</TableHead>
-              <TableHead className="text-xs">Details</TableHead>
+            <TableRow className="hover:bg-transparent text-table-header">
+              <TableHead>Timestamp</TableHead>
+              <TableHead>Workflow</TableHead>
+              <TableHead>Campaign</TableHead>
+              <TableHead className="text-right">Processed</TableHead>
+              <TableHead className="text-right">Errors</TableHead>
+              <TableHead>Duration</TableHead>
+              <TableHead>Status</TableHead>
+              <TableHead>Details</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
             {filtered.map((run) => (
-              <TableRow key={run.id} className="text-xs">
-                <TableCell className="font-mono text-muted-foreground whitespace-nowrap">
+              <TableRow key={run.id} className="text-table-cell">
+                <TableCell className="font-mono text-muted-foreground whitespace-nowrap text-body-small">
                   {formatDateTime(run.startedAt)}
                 </TableCell>
                 <TableCell className="font-medium text-foreground whitespace-nowrap">

@@ -51,7 +51,7 @@ export default function ScheduledPage() {
       {/* Filters */}
       <div className="flex items-center gap-3">
         <Select value={campaignFilter} onValueChange={(v) => setCampaignFilter(v || '')}>
-          <SelectTrigger className="h-8 w-[200px] text-xs bg-card border-border">
+          <SelectTrigger className="h-8 w-[200px] text-body-small bg-card border-border">
             <SelectValue placeholder="Campaign" />
           </SelectTrigger>
           <SelectContent>
@@ -61,7 +61,7 @@ export default function ScheduledPage() {
             ))}
           </SelectContent>
         </Select>
-        <span className="text-xs text-muted-foreground">
+        <span className="text-body-small text-muted-foreground">
           {filtered.length} scheduled emails
         </span>
       </div>
@@ -81,26 +81,26 @@ export default function ScheduledPage() {
               <div key={date}>
                 <div className="flex items-center gap-2 mb-2">
                   <Calendar className="w-3.5 h-3.5 text-primary" />
-                  <span className="text-xs font-medium text-foreground">
+                  <span className="text-section-title">
                     {new Date(date).toLocaleDateString('en-IN', { weekday: 'short', day: 'numeric', month: 'short' })}
                   </span>
                 </div>
                 <div className="rounded-lg border border-border bg-card overflow-hidden">
                   <Table>
                     <TableHeader>
-                      <TableRow className="hover:bg-transparent">
-                        <TableHead className="text-xs w-[90px]">Time</TableHead>
-                        <TableHead className="text-xs">Business</TableHead>
-                        <TableHead className="text-xs">Campaign</TableHead>
-                        <TableHead className="text-xs">Subject</TableHead>
-                        <TableHead className="text-xs">Status</TableHead>
-                        <TableHead className="text-xs w-[80px]" />
+                      <TableRow className="hover:bg-transparent text-table-header">
+                        <TableHead className="w-[90px]">Time</TableHead>
+                        <TableHead>Business</TableHead>
+                        <TableHead>Campaign</TableHead>
+                        <TableHead>Subject</TableHead>
+                        <TableHead>Status</TableHead>
+                        <TableHead className="w-[80px]" />
                       </TableRow>
                     </TableHeader>
                     <TableBody>
                       {items.map((email) => (
-                        <TableRow key={email.id} className="text-xs">
-                          <TableCell className="font-mono text-muted-foreground">
+                        <TableRow key={email.id} className="text-table-cell">
+                          <TableCell className="font-mono text-muted-foreground text-body-small">
                             <span className="flex items-center gap-1">
                               <Clock className="w-3 h-3" />
                               {email.scheduledTime}
@@ -134,9 +134,9 @@ export default function ScheduledPage() {
       <Dialog open={!!viewEmail} onOpenChange={() => setViewEmail(null)}>
         <DialogContent className="sm:max-w-[500px] bg-[#0D0D0F] border-border">
           <DialogHeader>
-            <DialogTitle className="text-sm">{viewEmail?.subject}</DialogTitle>
+            <DialogTitle className="text-card-title">{viewEmail?.subject}</DialogTitle>
           </DialogHeader>
-          <div className="text-xs space-y-2">
+          <div className="text-body-small space-y-2">
             <div className="flex gap-2 text-muted-foreground">
               <span>To:</span>
               <span className="text-foreground">{viewEmail?.contactEmail}</span>

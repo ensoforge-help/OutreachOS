@@ -35,9 +35,10 @@ const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
 interface SidebarProps {
   collapsed: boolean
   onToggle: () => void
+  className?: string
 }
 
-export function Sidebar({ collapsed, onToggle }: SidebarProps) {
+export function Sidebar({ collapsed, onToggle, className }: SidebarProps) {
   const pathname = usePathname()
 
   function isActive(href: string) {
@@ -49,7 +50,8 @@ export function Sidebar({ collapsed, onToggle }: SidebarProps) {
     <aside
       className={cn(
         'fixed left-0 top-0 z-40 flex h-screen flex-col border-r border-sidebar-border bg-sidebar transition-all duration-200',
-        collapsed ? 'w-[60px]' : 'w-[220px]'
+        collapsed ? 'w-[60px]' : 'w-[220px]',
+        className
       )}
     >
       {/* Header */}

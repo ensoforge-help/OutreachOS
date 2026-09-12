@@ -15,8 +15,8 @@ function SettingsSection({ title, description, children }: {
   return (
     <div className="space-y-4">
       <div>
-        <h3 className="text-sm font-medium text-foreground">{title}</h3>
-        {description && <p className="text-xs text-muted-foreground mt-0.5">{description}</p>}
+        <h3 className="text-section-title">{title}</h3>
+        {description && <p className="text-body-small text-muted-foreground mt-0.5">{description}</p>}
       </div>
       <div className="space-y-4">{children}</div>
     </div>
@@ -31,8 +31,8 @@ function SettingsField({ label, description, children }: {
   return (
     <div className="flex items-start justify-between gap-8">
       <div className="flex-1">
-        <Label className="text-xs font-medium">{label}</Label>
-        {description && <p className="text-[11px] text-muted-foreground mt-0.5">{description}</p>}
+        <Label className="text-kpi-label font-medium">{label}</Label>
+        {description && <p className="text-kpi-label text-muted-foreground mt-0.5">{description}</p>}
       </div>
       <div className="w-[260px] shrink-0">{children}</div>
     </div>
@@ -45,11 +45,11 @@ export default function SettingsPage() {
       {/* Workspace */}
       <SettingsSection title="Workspace" description="General workspace settings">
         <SettingsField label="Workspace Name" description="Display name for your workspace">
-          <Input defaultValue="OutreachOS" className="h-8 text-sm bg-card border-border" />
+          <Input defaultValue="OutreachOS" className="h-8 text-body bg-card border-border" />
         </SettingsField>
         <SettingsField label="Timezone" description="Used for scheduling and analytics">
           <Select defaultValue="asia-kolkata">
-            <SelectTrigger className="h-8 text-sm bg-card border-border">
+            <SelectTrigger className="h-8 text-body bg-card border-border">
               <SelectValue />
             </SelectTrigger>
             <SelectContent>
@@ -62,7 +62,7 @@ export default function SettingsPage() {
         </SettingsField>
         <SettingsField label="Default Sending Schedule" description="When to send approved emails">
           <Select defaultValue="weekday-morning">
-            <SelectTrigger className="h-8 text-sm bg-card border-border">
+            <SelectTrigger className="h-8 text-body bg-card border-border">
               <SelectValue />
             </SelectTrigger>
             <SelectContent>
@@ -80,7 +80,7 @@ export default function SettingsPage() {
       <SettingsSection title="AI" description="AI email generation configuration">
         <SettingsField label="AI Provider" description="Provider for email generation">
           <Select defaultValue="openrouter">
-            <SelectTrigger className="h-8 text-sm bg-card border-border">
+            <SelectTrigger className="h-8 text-body bg-card border-border">
               <SelectValue />
             </SelectTrigger>
             <SelectContent>
@@ -91,10 +91,10 @@ export default function SettingsPage() {
           </Select>
         </SettingsField>
         <SettingsField label="Model" description="AI model for draft generation">
-          <Input defaultValue="gpt-4o" className="h-8 text-sm bg-card border-border" />
+          <Input defaultValue="gpt-4o" className="h-8 text-body bg-card border-border" />
         </SettingsField>
         <SettingsField label="Temperature" description="Creativity level (0.0 – 1.0)">
-          <Input type="number" defaultValue="0.7" step="0.1" min="0" max="1" className="h-8 text-sm bg-card border-border" />
+          <Input type="number" defaultValue="0.7" step="0.1" min="0" max="1" className="h-8 text-body bg-card border-border" />
         </SettingsField>
       </SettingsSection>
 
@@ -103,13 +103,13 @@ export default function SettingsPage() {
       {/* Email */}
       <SettingsSection title="Email" description="Email sending configuration">
         <SettingsField label="Sender Name" description="Displayed in recipient's inbox">
-          <Input defaultValue="OutreachOS" className="h-8 text-sm bg-card border-border" />
+          <Input defaultValue="OutreachOS" className="h-8 text-body bg-card border-border" />
         </SettingsField>
         <SettingsField label="Sender Email" description="From address for outreach emails">
-          <Input defaultValue="hello@outreachos.com" className="h-8 text-sm bg-card border-border" />
+          <Input defaultValue="hello@outreachos.com" className="h-8 text-body bg-card border-border" />
         </SettingsField>
         <SettingsField label="Daily Sending Limit" description="Maximum emails per day">
-          <Input type="number" defaultValue="50" className="h-8 text-sm bg-card border-border" />
+          <Input type="number" defaultValue="50" className="h-8 text-body bg-card border-border" />
         </SettingsField>
       </SettingsSection>
 
@@ -118,7 +118,7 @@ export default function SettingsPage() {
       {/* Automation */}
       <SettingsSection title="Automation" description="Automation pipeline settings">
         <SettingsField label="Default Lead Limit" description="Max leads per campaign">
-          <Input type="number" defaultValue="100" className="h-8 text-sm bg-card border-border" />
+          <Input type="number" defaultValue="100" className="h-8 text-body bg-card border-border" />
         </SettingsField>
         <SettingsField label="Website Analysis" description="Analyze business websites automatically">
           <Switch defaultChecked />
@@ -142,7 +142,7 @@ export default function SettingsPage() {
           <Switch defaultChecked />
         </SettingsField>
         <SettingsField label="Maximum Daily Sends" description="Hard limit on daily email volume">
-          <Input type="number" defaultValue="100" className="h-8 text-sm bg-card border-border" />
+          <Input type="number" defaultValue="100" className="h-8 text-body bg-card border-border" />
         </SettingsField>
       </SettingsSection>
 
