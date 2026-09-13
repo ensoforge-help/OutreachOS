@@ -1,0 +1,562 @@
+{
+    "count": 37,
+    "businesses": [
+        {
+            "provider": "openstreetmap",
+            "providerId": "node/2643199033",
+            "name": "All star sports",
+            "category": "yes",
+            "address": "Dharmaveer Marg",
+            "city": "Thane",
+            "latitude": 19.1956736,
+            "longitude": 72.9646939,
+            "hasWebsite": false,
+            "metadata": {
+                "addr:city": "Thane",
+                "addr:housename": "all star sports",
+                "addr:postcode": "400602",
+                "addr:street": "Dharmaveer Marg",
+                "name": "All star sports",
+                "shop": "yes"
+            }
+        },
+        {
+            "provider": "openstreetmap",
+            "providerId": "node/2851477529",
+            "name": "Flour Mill",
+            "category": "yes",
+            "latitude": 19.049561,
+            "longitude": 72.826271,
+            "hasWebsite": false,
+            "metadata": {
+                "name": "Flour Mill",
+                "shop": "yes"
+            }
+        },
+        {
+            "provider": "openstreetmap",
+            "providerId": "node/3206016627",
+            "name": "babu bhi",
+            "category": "yes",
+            "latitude": 19.0627485,
+            "longitude": 72.9286967,
+            "hasWebsite": false,
+            "metadata": {
+                "name": "babu bhi",
+                "shop": "yes"
+            }
+        },
+        {
+            "provider": "openstreetmap",
+            "providerId": "node/3206016816",
+            "name": "pooja communication",
+            "category": "yes",
+            "latitude": 19.0629144,
+            "longitude": 72.9282683,
+            "hasWebsite": false,
+            "metadata": {
+                "name": "pooja communication",
+                "shop": "yes"
+            }
+        },
+        {
+            "provider": "openstreetmap",
+            "providerId": "node/3215551467",
+            "name": "Zerox Shop",
+            "category": "yes",
+            "latitude": 19.0603544,
+            "longitude": 72.9119625,
+            "hasWebsite": false,
+            "metadata": {
+                "name": "Zerox Shop",
+                "shop": "yes"
+            }
+        },
+        {
+            "provider": "openstreetmap",
+            "providerId": "node/3215551473",
+            "name": "Chinese",
+            "category": "yes",
+            "latitude": 19.0601781,
+            "longitude": 72.9118925,
+            "hasWebsite": false,
+            "metadata": {
+                "name": "Chinese",
+                "shop": "yes"
+            }
+        },
+        {
+            "provider": "openstreetmap",
+            "providerId": "node/3217146518",
+            "name": "Ice-Cream Parlour",
+            "category": "yes",
+            "address": "P.L. Lokhande Marg",
+            "city": "mumbai",
+            "latitude": 19.0606503,
+            "longitude": 72.9102885,
+            "hasWebsite": false,
+            "metadata": {
+                "addr:city": "mumbai",
+                "addr:postcode": "400089",
+                "addr:street": "P.L. Lokhande Marg",
+                "name": "Ice-Cream Parlour",
+                "shop": "yes"
+            }
+        },
+        {
+            "provider": "openstreetmap",
+            "providerId": "node/3217149384",
+            "name": "gernel",
+            "category": "yes",
+            "latitude": 19.0536781,
+            "longitude": 72.9271582,
+            "hasWebsite": false,
+            "metadata": {
+                "name": "gernel",
+                "shop": "yes"
+            }
+        },
+        {
+            "provider": "openstreetmap",
+            "providerId": "node/3217430612",
+            "name": "saundarya beauty parlour",
+            "category": "yes",
+            "latitude": 19.0541136,
+            "longitude": 72.9234513,
+            "hasWebsite": false,
+            "metadata": {
+                "name": "saundarya beauty parlour",
+                "shop": "yes"
+            }
+        },
+        {
+            "provider": "openstreetmap",
+            "providerId": "node/3534650119",
+            "name": "ice cream shop",
+            "category": "yes",
+            "latitude": 19.0628483,
+            "longitude": 72.9220001,
+            "hasWebsite": false,
+            "metadata": {
+                "name": "ice cream shop",
+                "shop": "yes"
+            }
+        },
+        {
+            "provider": "openstreetmap",
+            "providerId": "node/3761218257",
+            "name": "Chroma",
+            "category": "yes",
+            "city": "Kharghar",
+            "latitude": 19.0338195,
+            "longitude": 73.0672244,
+            "hasWebsite": false,
+            "metadata": {
+                "addr:city": "Kharghar",
+                "addr:housenumber": "Sector 7",
+                "addr:postcode": "410210",
+                "name": "Chroma",
+                "shop": "yes"
+            }
+        },
+        {
+            "provider": "openstreetmap",
+            "providerId": "node/4644026820",
+            "name": "Sahakar Bazaar Airoli",
+            "category": "yes",
+            "latitude": 19.1495165,
+            "longitude": 72.9996862,
+            "hasWebsite": false,
+            "metadata": {
+                "name": "Sahakar Bazaar Airoli",
+                "shop": "yes"
+            }
+        },
+        {
+            "provider": "openstreetmap",
+            "providerId": "node/5746301573",
+            "name": "Nike Factory Outlet",
+            "category": "yes",
+            "latitude": 19.1838711,
+            "longitude": 72.9522482,
+            "hasWebsite": false,
+            "metadata": {
+                "name": "Nike Factory Outlet",
+                "shop": "yes"
+            }
+        },
+        {
+            "provider": "openstreetmap",
+            "providerId": "node/8251798328",
+            "name": "friutique",
+            "category": "yes",
+            "address": "21st Road",
+            "city": "Mumbai",
+            "latitude": 19.0744346,
+            "longitude": 72.8271925,
+            "website": "https://fruitique.in/",
+            "hasWebsite": true,
+            "metadata": {
+                "addr:city": "Mumbai",
+                "addr:postcode": "400052",
+                "addr:street": "21st Road",
+                "name": "friutique",
+                "organic": "yes",
+                "payment:cash": "yes",
+                "payment:debit_cards": "yes",
+                "shop": "yes",
+                "website": "https://fruitique.in/"
+            }
+        },
+        {
+            "provider": "openstreetmap",
+            "providerId": "node/8537797177",
+            "name": "Surinder Kumar Saini & Co",
+            "category": "yes",
+            "latitude": 19.2313922,
+            "longitude": 72.9697357,
+            "phone": "9833880615",
+            "hasWebsite": false,
+            "metadata": {
+                "addr:housenumber": "25",
+                "name": "Surinder Kumar Saini & Co",
+                "phone": "9833880615",
+                "shop": "yes"
+            }
+        },
+        {
+            "provider": "openstreetmap",
+            "providerId": "node/8537797181",
+            "name": "Kerala Stores",
+            "category": "yes",
+            "latitude": 19.2313007,
+            "longitude": 72.9696648,
+            "phone": "7738130325",
+            "hasWebsite": false,
+            "metadata": {
+                "addr:housenumber": "10B",
+                "name": "Kerala Stores",
+                "phone": "7738130325",
+                "shop": "yes"
+            }
+        },
+        {
+            "provider": "openstreetmap",
+            "providerId": "node/9023279177",
+            "name": "Kwality Xerox",
+            "category": "yes",
+            "latitude": 19.1202325,
+            "longitude": 72.8487966,
+            "hasWebsite": false,
+            "metadata": {
+                "name": "Kwality Xerox",
+                "shop": "yes"
+            }
+        },
+        {
+            "provider": "openstreetmap",
+            "providerId": "node/9023286026",
+            "name": "Allwyn Jumbo Xerox",
+            "category": "yes",
+            "latitude": 19.1200296,
+            "longitude": 72.8487081,
+            "hasWebsite": false,
+            "metadata": {
+                "name": "Allwyn Jumbo Xerox",
+                "shop": "yes"
+            }
+        },
+        {
+            "provider": "openstreetmap",
+            "providerId": "node/9803347658",
+            "name": "Mukesh Traders",
+            "category": "yes",
+            "latitude": 19.1522127,
+            "longitude": 72.9946414,
+            "hasWebsite": false,
+            "metadata": {
+                "name": "Mukesh Traders",
+                "shop": "yes"
+            }
+        },
+        {
+            "provider": "openstreetmap",
+            "providerId": "node/10025892078",
+            "name": "Leo Packers and Movers Mumbai",
+            "category": "yes",
+            "latitude": 19.1587308,
+            "longitude": 72.940408,
+            "phone": "918088001122",
+            "website": "https://leopackersandmovers.com",
+            "hasWebsite": true,
+            "metadata": {
+                "address": "Chitroda Compound, Behind Asian Paints, Opp. Bhagtani Enclave, Bhandup – Sonapur Lane, Bhandup West, Mumbai - 400078,",
+                "contact:phone": "918088001122",
+                "contact:website": "https://leopackersandmovers.com",
+                "description": "Leo Packers and Movers Service in Bhandup West, Mumbai",
+                "email": "info@leopackersandmovers.com",
+                "name": "Leo Packers and Movers Mumbai",
+                "postal_code": "400078",
+                "shop": "yes"
+            }
+        },
+        {
+            "provider": "openstreetmap",
+            "providerId": "node/10139498701",
+            "name": "Manoj Enterprise",
+            "category": "yes",
+            "latitude": 19.1731378,
+            "longitude": 72.9555236,
+            "hasWebsite": false,
+            "metadata": {
+                "currency:XBT": "yes",
+                "name": "Manoj Enterprise",
+                "payment:lightning": "no",
+                "payment:onchain": "yes",
+                "shop": "yes",
+                "survey:date": "2022-10-30"
+            }
+        },
+        {
+            "provider": "openstreetmap",
+            "providerId": "node/11449426654",
+            "name": "Bombay Traders",
+            "category": "yes",
+            "latitude": 19.0417876,
+            "longitude": 72.8576658,
+            "hasWebsite": false,
+            "metadata": {
+                "name": "Bombay Traders",
+                "shop": "yes"
+            }
+        },
+        {
+            "provider": "openstreetmap",
+            "providerId": "node/11449429144",
+            "name": "Transit camp consumer society",
+            "category": "yes",
+            "latitude": 19.0415717,
+            "longitude": 72.8580413,
+            "hasWebsite": false,
+            "metadata": {
+                "name": "Transit camp consumer society",
+                "shop": "yes"
+            }
+        },
+        {
+            "provider": "openstreetmap",
+            "providerId": "node/11449440900",
+            "name": "Ramdev Kirana Store",
+            "category": "yes",
+            "latitude": 19.0410469,
+            "longitude": 72.8586809,
+            "hasWebsite": false,
+            "metadata": {
+                "name": "Ramdev Kirana Store",
+                "shop": "yes"
+            }
+        },
+        {
+            "provider": "openstreetmap",
+            "providerId": "node/11691627868",
+            "name": "Livspace",
+            "category": "yes",
+            "latitude": 19.0099879,
+            "longitude": 73.0371208,
+            "hasWebsite": false,
+            "metadata": {
+                "name": "Livspace",
+                "shop": "yes"
+            }
+        },
+        {
+            "provider": "openstreetmap",
+            "providerId": "node/11691683151",
+            "name": "Airtel Store",
+            "category": "yes",
+            "latitude": 19.0107059,
+            "longitude": 73.0332804,
+            "hasWebsite": false,
+            "metadata": {
+                "name": "Airtel Store",
+                "shop": "yes"
+            }
+        },
+        {
+            "provider": "openstreetmap",
+            "providerId": "node/11698484808",
+            "name": "Patel Book Centre",
+            "category": "yes",
+            "latitude": 19.1115885,
+            "longitude": 72.8956577,
+            "hasWebsite": false,
+            "metadata": {
+                "name": "Patel Book Centre",
+                "shop": "yes"
+            }
+        },
+        {
+            "provider": "openstreetmap",
+            "providerId": "node/11716428253",
+            "name": "Govinda Flower's Shop",
+            "category": "yes",
+            "latitude": 19.0377656,
+            "longitude": 72.9094153,
+            "hasWebsite": false,
+            "metadata": {
+                "name": "Govinda Flower's Shop",
+                "shop": "yes"
+            }
+        },
+        {
+            "provider": "openstreetmap",
+            "providerId": "node/11998461221",
+            "name": "Vaibhav Jani - Shastriji",
+            "category": "yes",
+            "address": "c-702 Off New Link Road",
+            "latitude": 19.1401161,
+            "longitude": 72.8345098,
+            "hasWebsite": false,
+            "metadata": {
+                "addr:housenumber": "c-702",
+                "addr:street": "Off New Link Road",
+                "name": "Vaibhav Jani - Shastriji",
+                "shop": "yes"
+            }
+        },
+        {
+            "provider": "openstreetmap",
+            "providerId": "node/12032716723",
+            "name": "Mehndi Artist Sunita Kenia",
+            "category": "yes",
+            "address": "4 Western Express Highway",
+            "latitude": 19.1737039,
+            "longitude": 72.8590009,
+            "hasWebsite": false,
+            "metadata": {
+                "addr:district": "Borivali",
+                "addr:housenumber": "4",
+                "addr:street": "Western Express Highway",
+                "name": "Mehndi Artist Sunita Kenia",
+                "shop": "yes"
+            }
+        },
+        {
+            "provider": "openstreetmap",
+            "providerId": "way/314403109",
+            "name": "shaikh iqbal shop",
+            "category": "yes",
+            "latitude": 19.0362853,
+            "longitude": 72.9506038,
+            "hasWebsite": false,
+            "metadata": {
+                "building": "yes",
+                "name": "shaikh iqbal shop",
+                "shop": "yes"
+            }
+        },
+        {
+            "provider": "openstreetmap",
+            "providerId": "way/354018578",
+            "name": "King's Electronics",
+            "category": "yes",
+            "city": "Kharghar",
+            "latitude": 19.0341874,
+            "longitude": 73.0677397,
+            "hasWebsite": false,
+            "metadata": {
+                "addr:city": "Kharghar",
+                "addr:housenumber": "Sector 7",
+                "addr:postcode": "410210",
+                "building": "yes",
+                "name": "King's Electronics",
+                "shop": "yes"
+            }
+        },
+        {
+            "provider": "openstreetmap",
+            "providerId": "way/356452040",
+            "name": "NAVKAR CYRAMIC",
+            "category": "yes",
+            "latitude": 19.0198528,
+            "longitude": 72.8388877,
+            "hasWebsite": false,
+            "metadata": {
+                "building": "yes",
+                "name": "NAVKAR CYRAMIC",
+                "shop": "yes"
+            }
+        },
+        {
+            "provider": "openstreetmap",
+            "providerId": "way/372669339",
+            "name": "Tiara Shopping Centre",
+            "category": "yes",
+            "city": "Kharghar",
+            "latitude": 19.0465647,
+            "longitude": 73.0725464,
+            "hasWebsite": false,
+            "metadata": {
+                "addr:city": "Kharghar",
+                "addr:housenumber": "Sector 13",
+                "addr:postcode": "410210",
+                "building": "yes",
+                "name": "Tiara Shopping Centre",
+                "shop": "yes"
+            }
+        },
+        {
+            "provider": "openstreetmap",
+            "providerId": "way/930652548",
+            "name": "Gupta Battery Service",
+            "category": "yes",
+            "latitude": 19.0762,
+            "longitude": 72.8809293,
+            "hasWebsite": false,
+            "metadata": {
+                "building": "yes",
+                "name": "Gupta Battery Service",
+                "shop": "yes"
+            }
+        },
+        {
+            "provider": "openstreetmap",
+            "providerId": "way/1364248934",
+            "name": "Siddique Sardar Chawal",
+            "category": "yes",
+            "latitude": 19.0782475,
+            "longitude": 72.8828686,
+            "hasWebsite": false,
+            "metadata": {
+                "building": "yes",
+                "name": "Siddique Sardar Chawal",
+                "shop": "yes"
+            }
+        },
+        {
+            "provider": "openstreetmap",
+            "providerId": "way/1550742921",
+            "name": "Kiran Stores",
+            "category": "yes",
+            "address": "S S Wagh Road (Morbaugh Road)",
+            "city": "Naigaon, Dadar(East), Mumbai",
+            "latitude": 19.0110607,
+            "longitude": 72.8468871,
+            "hasWebsite": false,
+            "metadata": {
+                "addr:city": "Naigaon, Dadar(East), Mumbai",
+                "addr:district": "Mumbai",
+                "addr:postcode": "400014",
+                "addr:street": "S S Wagh Road (Morbaugh Road)",
+                "air_conditioning": "no",
+                "building": "commercial",
+                "name": "Kiran Stores",
+                "payment:cash": "yes",
+                "shop": "yes"
+            }
+        }
+    ],
+    "newCount": 4,
+    "duplicateCount": 0,
+    "errorCount": 0
+}

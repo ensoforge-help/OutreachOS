@@ -1,0 +1,125 @@
+-- WARNING: This schema is for context only and is not meant to be run.
+-- Table order and constraints may not be valid for execution.
+
+CREATE TABLE public.campaigns (
+  id uuid NOT NULL DEFAULT gen_random_uuid(),
+  name text NOT NULL,
+  category text NOT NULL,
+  location text NOT NULL,
+  radius integer,
+  min_rating numeric,
+  website_requirement text,
+  email_requirement text,
+  lead_limit integer,
+  status USER-DEFINED DEFAULT 'running'::campaign_status,
+  schedule_time text,
+  leads_count integer DEFAULT 0,
+  emails_found integer DEFAULT 0,
+  verified_emails integer DEFAULT 0,
+  pending_approvals integer DEFAULT 0,
+  sent_emails integer DEFAULT 0,
+  replies integer DEFAULT 0,
+  reply_rate numeric DEFAULT 0.00,
+  created_at timestamp with time zone DEFAULT now(),
+  updated_at timestamp with time zone DEFAULT now(),
+  CONSTRAINT campaigns_pkey PRIMARY KEY (id)
+);
+CREATE TABLE public.businesses (
+  id uuid NOT NULL DEFAULT gen_random_uuid(),
+  name text NOT NULL,
+  category text NOT NULL,
+  address text NOT NULL,
+  city text NOT NULL,
+  phone text,
+  website text,
+  has_website boolean DEFAULT false,
+  rating numeric,
+  review_count integer DEFAULT 0,
+  website_status USER-DEFINED,
+  mobile_experience USER-DEFINED,
+  has_contact_page boolean DEFAULT false,
+  has_online_booking boolean DEFAULT false,
+  has_online_ordering boolean DEFAULT false,
+  detected_technology ARRAY,
+  lead_score integer DEFAULT 0,
+  status USER-DEFINED DEFAULT 'new'::lead_status,
+  created_at timestamp with time zone DEFAULT now(),
+  updated_at timestamp with time zone DEFAULT now(),
+  provider text,
+  provider_id text,
+  latitude numeric,
+  longitude numeric,
+  business_status text,
+  metadata jsonb,
+  CONSTRAINT businesses_pkey PRIMARY KEY (id)
+);
+CREATE TABLE public.contacts (
+  id uuid NOT NULL DEFAULT gen_random_uuid(),
+  business_id uuid NOT NULL,
+  name text,
+  email text NOT NULL,
+  job_title text,
+  source USER-DEFINED DEFAULT 'manual'::contact_source,
+  confidence integer DEFAULT 0,
+  verification_status USER-DEFINED DEFAULT 'unverified'::verification_status,
+  created_at timestamp with time zone DEFAULT now(),
+  updated_at timestamp with time zone DEFAULT now(),
+  CONSTRAINT contacts_pkey PRIMARY KEY (id),
+  CONSTRAINT contacts_business_id_fkey FOREIGN KEY (business_id) REFERENCES public.businesses(id)
+);
+CREATE TABLE public.emails (
+  id uuid NOT NULL DEFAULT gen_random_uuid(),
+  business_id uuid NOT NULL,
+  contact_id uuid,
+  campaign_id uuid NOT NULL,
+  subject text NOT NULL,
+  body text NOT NULL,
+  ai_score integer DEFAULT 0,
+  opportunity_summary text,
+  status USER-DEFINED DEFAULT 'pending'::email_status,
+  scheduled_at timestamp with time zone,
+  sent_at timestamp with time zone,
+  opened_at timestamp with time zone,
+  replied_at timestamp with time zone,
+  created_at timestamp with time zone DEFAULT now(),
+  updated_at timestamp with time zone DEFAULT now(),
+  CONSTRAINT emails_pkey PRIMARY KEY (id),
+  CONSTRAINT emails_business_id_fkey FOREIGN KEY (business_id) REFERENCES public.businesses(id),
+  CONSTRAINT emails_contact_id_fkey FOREIGN KEY (contact_id) REFERENCES public.contacts(id),
+  CONSTRAINT emails_campaign_id_fkey FOREIGN KEY (campaign_id) REFERENCES public.campaigns(id)
+);
+CREATE TABLE public.system_logs (
+  id uuid NOT NULL DEFAULT gen_random_uuid(),
+  action text NOT NULL,
+  type text NOT NULL,
+  status text NOT NULL,
+  message text NOT NULL,
+  duration text,
+  metadata jsonb,
+  created_at timestamp with time zone DEFAULT now(),
+  CONSTRAINT system_logs_pkey PRIMARY KEY (id)
+);
+CREATE TABLE public.campaign_businesses (
+  campaign_id uuid NOT NULL,
+  business_id uuid NOT NULL,
+  discovered_at timestamp with time zone DEFAULT now(),
+  discovery_provider text,
+  CONSTRAINT campaign_businesses_pkey PRIMARY KEY (campaign_id, business_id),
+  CONSTRAINT campaign_businesses_campaign_id_fkey FOREIGN KEY (campaign_id) REFERENCES public.campaigns(id),
+  CONSTRAINT campaign_businesses_business_id_fkey FOREIGN KEY (business_id) REFERENCES public.businesses(id)
+);
+CREATE TABLE public.discovery_runs (
+  id uuid NOT NULL DEFAULT gen_random_uuid(),
+  campaign_id uuid NOT NULL,
+  provider text NOT NULL,
+  status text NOT NULL,
+  started_at timestamp with time zone DEFAULT now(),
+  completed_at timestamp with time zone,
+  found_count integer DEFAULT 0,
+  new_count integer DEFAULT 0,
+  duplicate_count integer DEFAULT 0,
+  error_count integer DEFAULT 0,
+  error_message text,
+  CONSTRAINT discovery_runs_pkey PRIMARY KEY (id),
+  CONSTRAINT discovery_runs_campaign_id_fkey FOREIGN KEY (campaign_id) REFERENCES public.campaigns(id)
+);

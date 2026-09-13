@@ -1,23 +1,26 @@
-'use client'
-
-import { use } from 'react'
-import { getCampaignById } from '@/data/dummy-campaigns'
-import { automationRuns } from '@/data/dummy-logs'
-import { CampaignHeader } from '@/components/campaigns/campaign-header'
-import { CampaignMetrics } from '@/components/campaigns/campaign-metrics'
-import { CampaignPipeline } from '@/components/campaigns/campaign-pipeline'
-import { CampaignActivity } from '@/components/campaigns/campaign-activity'
+import { createClient } from '@/lib/supabase/server'
+import { mapDbCampaignToApp, mapDbLogToApp } from '@/lib/mappers'
+import { CampaignRealtimeView } from '@/components/campaigns/campaign-realtime-view'
 import { EmptyState } from '@/components/ui/empty-state'
+import type { AutomationRun } from '@/types/common'
 
-export default function CampaignDetailPage({
+export default async function CampaignDetailPage({
   params,
 }: {
   params: Promise<{ id: string }>
 }) {
-  const { id } = use(params)
-  const campaign = getCampaignById(id)
+  const { id } = await params
+  
+  const supabase = await createClient()
+  
+  // 1. Fetch initial Campaign
+  const { data: dbCampaign, error } = await supabase
+    .from('campaigns')
+    .select('*')
+    .eq('id', id)
+    .single()
 
-  if (!campaign) {
+  if (error || !dbCampaign) {
     return (
       <EmptyState
         title="Campaign not found"
@@ -26,14 +29,28 @@ export default function CampaignDetailPage({
     )
   }
 
-  const campaignRuns = automationRuns.filter((r) => r.campaignId === campaign.id)
+  const campaign = mapDbCampaignToApp(dbCampaign)
+
+  // 2. Fetch initial Logs
+  const { data: discoveryRuns } = await supabase
+    .from('discovery_runs')
+    .select('*')
+    .eq('campaign_id', id)
+    .order('started_at', { ascending: false })
+
+  const { data: systemLogs } = await supabase
+    .from('system_logs')
+    .select('*')
+    .eq('campaign_id', id)
+    .order('created_at', { ascending: false })
+
+  const mappedDiscoveryRuns = (discoveryRuns || []).map(mapDbLogToApp)
+  const mappedSystemLogs = (systemLogs || []).map(mapDbLogToApp)
+
+  const initialRuns: AutomationRun[] = [...mappedDiscoveryRuns, ...mappedSystemLogs]
+    .sort((a, b) => new Date(b.startedAt).getTime() - new Date(a.startedAt).getTime())
 
   return (
-    <div className="space-y-6">
-      <CampaignHeader campaign={campaign} />
-      <CampaignMetrics campaign={campaign} />
-      <CampaignPipeline campaign={campaign} />
-      <CampaignActivity runs={campaignRuns} />
-    </div>
+    <CampaignRealtimeView initialCampaign={campaign} initialRuns={initialRuns} />
   )
 }

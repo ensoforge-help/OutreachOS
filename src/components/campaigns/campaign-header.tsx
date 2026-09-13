@@ -2,6 +2,7 @@ import type { Campaign } from '@/types/campaign'
 import { StatusBadge } from '@/components/ui/status-badge'
 import { Button } from '@/components/ui/button'
 import { Pause, Play } from 'lucide-react'
+import { FetchBusinessesButton } from './FetchBusinessesButton'
 
 interface CampaignHeaderProps {
   campaign: Campaign
@@ -18,6 +19,7 @@ export function CampaignHeader({ campaign }: CampaignHeaderProps) {
       </div>
       <div className="flex items-center gap-3">
         <StatusBadge status={campaign.status} />
+        <FetchBusinessesButton campaignId={campaign.id} />
         <Button variant="outline" size="sm">
           {campaign.status === 'running' ? (
             <><Pause className="w-3.5 h-3.5 mr-1.5" /> Pause Campaign</>

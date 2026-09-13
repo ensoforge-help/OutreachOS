@@ -33,8 +33,8 @@ CREATE TABLE IF NOT EXISTS public.businesses (
   id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
   name TEXT NOT NULL,
   category TEXT NOT NULL,
-  address TEXT NOT NULL,
-  city TEXT NOT NULL,
+  address TEXT,
+  city TEXT,
   phone TEXT,
   website TEXT,
   has_website BOOLEAN DEFAULT false,
@@ -52,10 +52,43 @@ CREATE TABLE IF NOT EXISTS public.businesses (
   -- Internal Meta
   lead_score INTEGER DEFAULT 0,
   status lead_status DEFAULT 'new'::lead_status,
-  campaign_id UUID REFERENCES public.campaigns(id) ON DELETE SET NULL,
+  
+  -- Discovery Provider Data
+  provider TEXT,
+  provider_id TEXT,
+  latitude NUMERIC,
+  longitude NUMERIC,
+  business_status TEXT,
+  metadata JSONB,
   
   created_at TIMESTAMPTZ DEFAULT NOW(),
-  updated_at TIMESTAMPTZ DEFAULT NOW()
+  updated_at TIMESTAMPTZ DEFAULT NOW(),
+  
+  UNIQUE(provider, provider_id)
+);
+
+-- 2.1 CAMPAIGN BUSINESSES (Many-to-Many)
+CREATE TABLE IF NOT EXISTS public.campaign_businesses (
+  campaign_id UUID NOT NULL REFERENCES public.campaigns(id) ON DELETE CASCADE,
+  business_id UUID NOT NULL REFERENCES public.businesses(id) ON DELETE CASCADE,
+  discovered_at TIMESTAMPTZ DEFAULT NOW(),
+  discovery_provider TEXT,
+  PRIMARY KEY (campaign_id, business_id)
+);
+
+-- 2.2 DISCOVERY RUNS
+CREATE TABLE IF NOT EXISTS public.discovery_runs (
+  id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
+  campaign_id UUID NOT NULL REFERENCES public.campaigns(id) ON DELETE CASCADE,
+  provider TEXT NOT NULL,
+  status TEXT NOT NULL, -- 'running', 'completed', 'failed'
+  started_at TIMESTAMPTZ DEFAULT NOW(),
+  completed_at TIMESTAMPTZ,
+  found_count INTEGER DEFAULT 0,
+  new_count INTEGER DEFAULT 0,
+  duplicate_count INTEGER DEFAULT 0,
+  error_count INTEGER DEFAULT 0,
+  error_message TEXT
 );
 
 -- 3. CONTACTS
@@ -110,6 +143,8 @@ CREATE TABLE IF NOT EXISTS public.system_logs (
   message TEXT NOT NULL,
   duration TEXT,
   metadata JSONB,
+  campaign_id UUID REFERENCES public.campaigns(id) ON DELETE CASCADE,
   
   created_at TIMESTAMPTZ DEFAULT NOW()
 );
+
