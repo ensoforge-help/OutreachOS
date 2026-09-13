@@ -16,9 +16,8 @@ import {
 import { Globe, ExternalLink } from 'lucide-react'
 
 export function RecentLeadsTable() {
-  // Show top 8 leads sorted by score
   const recentLeads = [...businesses]
-    .sort((a, b) => b.leadScore - a.leadScore)
+    .sort((a, b) => (b.leadScore ?? 0) - (a.leadScore ?? 0))
     .slice(0, 8)
 
   return (
@@ -66,10 +65,10 @@ export function RecentLeadsTable() {
                   {contact?.email || '—'}
                 </TableCell>
                 <TableCell className="text-right">
-                  <ScoreBadge score={biz.leadScore} />
+                  <ScoreBadge score={biz.leadScore ?? 0} />
                 </TableCell>
                 <TableCell>
-                  <StatusBadge status={biz.status} />
+                  <StatusBadge status={biz.status ?? 'new'} />
                 </TableCell>
               </TableRow>
             )

@@ -48,7 +48,7 @@ function DetailRow({ icon, label, value }: { icon: React.ReactNode; label: strin
 export function LeadDetailDrawer({ business, contact, open, onClose }: LeadDetailDrawerProps) {
   if (!business) return null
 
-  const opportunity = business.leadScore >= 80
+  const opportunity = (business.leadScore ?? 0) >= 80
     ? {
         summary: business.hasWebsite
           ? 'Website improvements detected. Potential for digital upgrade services.'
@@ -159,7 +159,7 @@ export function LeadDetailDrawer({ business, contact, open, onClose }: LeadDetai
               <div className="flex items-center gap-2">
                 <Lightbulb className="w-4 h-4 text-primary" />
                 <span className="text-card-title flex items-center gap-2">
-                  Lead Score: <ScoreBadge score={business.leadScore} />
+                  Lead Score: <ScoreBadge score={business.leadScore ?? 0} />
                 </span>
               </div>
               <p className="text-body-small text-foreground">{opportunity.summary}</p>

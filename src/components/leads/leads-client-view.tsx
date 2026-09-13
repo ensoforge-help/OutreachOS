@@ -95,7 +95,7 @@ export function LeadsClientView({ initialLeads, initialContacts, activeCampaigns
     if (selectedIds.size === paginatedLeads.length) {
       setSelectedIds(new Set())
     } else {
-      setSelectedIds(new Set(paginatedLeads.map((b) => b.id)))
+      setSelectedIds(new Set(paginatedLeads.map((b) => b.id).filter((id): id is string => id !== undefined)))
     }
   }
 
@@ -168,7 +168,7 @@ export function LeadsClientView({ initialLeads, initialContacts, activeCampaigns
       {/* Detail Drawer */}
       <LeadDetailDrawer
         business={selectedLead}
-        contact={selectedLead ? getContact(selectedLead.id) : undefined}
+        contact={selectedLead?.id ? getContact(selectedLead.id) : undefined}
         open={!!selectedLead}
         onClose={() => setSelectedLead(null)}
       />

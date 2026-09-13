@@ -64,17 +64,18 @@ export function LeadsTable({
         </TableHeader>
         <TableBody>
           {leads.map((biz) => {
-            const contact = getContact(biz.id)
+            const bizId = biz.id || ''
+            const contact = getContact(bizId)
             return (
               <TableRow
-                key={biz.id}
+                key={bizId}
                 className="text-table-cell cursor-pointer"
                 onClick={() => onViewLead(biz)}
               >
                 <TableCell onClick={(e) => e.stopPropagation()}>
                   <Checkbox
-                    checked={selectedIds.has(biz.id)}
-                    onCheckedChange={() => onToggleSelect(biz.id)}
+                    checked={selectedIds.has(bizId)}
+                    onCheckedChange={() => onToggleSelect(bizId)}
                     aria-label={`Select ${biz.name}`}
                   />
                 </TableCell>
@@ -95,10 +96,10 @@ export function LeadsTable({
                   {contact?.email || '—'}
                 </TableCell>
                 <TableCell className="text-right">
-                  <ScoreBadge score={biz.leadScore} />
+                  <ScoreBadge score={biz.leadScore ?? 0} />
                 </TableCell>
                 <TableCell>
-                  <StatusBadge status={biz.status} />
+                  <StatusBadge status={biz.status ?? 'new'} />
                 </TableCell>
                 <TableCell>
                   <Button variant="ghost" size="icon-xs" onClick={() => onViewLead(biz)}>
