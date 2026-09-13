@@ -4,6 +4,8 @@ import type { Contact } from '@/types/contact'
 // Dummy businesses
 export const businesses: Business[] = [
   {
+    provider: 'dummy',
+    providerId: 'dummy',
     id: 'biz-001',
     name: 'Spice Garden Restaurant',
     category: 'Restaurant',
@@ -25,6 +27,8 @@ export const businesses: Business[] = [
     createdAt: '2024-09-01T10:30:00Z',
   },
   {
+    provider: 'dummy',
+    providerId: 'dummy',
     id: 'biz-002',
     name: 'Taj Mahal Dining',
     category: 'Restaurant',
@@ -46,6 +50,8 @@ export const businesses: Business[] = [
     createdAt: '2024-09-01T11:15:00Z',
   },
   {
+    provider: 'dummy',
+    providerId: 'dummy',
     id: 'biz-003',
     name: 'HealthFirst Clinic',
     category: 'Clinic',
@@ -67,6 +73,8 @@ export const businesses: Business[] = [
     createdAt: '2024-09-02T09:00:00Z',
   },
   {
+    provider: 'dummy',
+    providerId: 'dummy',
     id: 'biz-004',
     name: 'FitZone Gym',
     category: 'Gym & Fitness',
@@ -83,6 +91,8 @@ export const businesses: Business[] = [
     createdAt: '2024-09-02T14:30:00Z',
   },
   {
+    provider: 'dummy',
+    providerId: 'dummy',
     id: 'biz-005',
     name: 'Glamour Studio Salon',
     category: 'Salon & Spa',
@@ -104,6 +114,8 @@ export const businesses: Business[] = [
     createdAt: '2024-09-03T08:45:00Z',
   },
   {
+    provider: 'dummy',
+    providerId: 'dummy',
     id: 'biz-006',
     name: 'BrightMinds Academy',
     category: 'Educational Institute',
@@ -125,6 +137,8 @@ export const businesses: Business[] = [
     createdAt: '2024-09-03T10:00:00Z',
   },
   {
+    provider: 'dummy',
+    providerId: 'dummy',
     id: 'biz-007',
     name: 'AutoCare Service Center',
     category: 'Auto Service',
@@ -141,6 +155,8 @@ export const businesses: Business[] = [
     createdAt: '2024-09-04T11:20:00Z',
   },
   {
+    provider: 'dummy',
+    providerId: 'dummy',
     id: 'biz-008',
     name: 'Urban Bites Café',
     category: 'Restaurant',
@@ -162,6 +178,8 @@ export const businesses: Business[] = [
     createdAt: '2024-09-04T13:45:00Z',
   },
   {
+    provider: 'dummy',
+    providerId: 'dummy',
     id: 'biz-009',
     name: 'Wellness Hub Clinic',
     category: 'Clinic',
@@ -183,6 +201,8 @@ export const businesses: Business[] = [
     createdAt: '2024-09-05T09:30:00Z',
   },
   {
+    provider: 'dummy',
+    providerId: 'dummy',
     id: 'biz-010',
     name: 'PowerLift Fitness Studio',
     category: 'Gym & Fitness',
@@ -204,6 +224,8 @@ export const businesses: Business[] = [
     createdAt: '2024-09-05T14:00:00Z',
   },
   {
+    provider: 'dummy',
+    providerId: 'dummy',
     id: 'biz-011',
     name: 'Royal Residency Hotel',
     category: 'Hotel & Hospitality',
@@ -225,6 +247,8 @@ export const businesses: Business[] = [
     createdAt: '2024-09-06T08:00:00Z',
   },
   {
+    provider: 'dummy',
+    providerId: 'dummy',
     id: 'biz-012',
     name: 'TechEd Learning Center',
     category: 'Educational Institute',
@@ -241,6 +265,8 @@ export const businesses: Business[] = [
     createdAt: '2024-09-06T10:30:00Z',
   },
   {
+    provider: 'dummy',
+    providerId: 'dummy',
     id: 'biz-013',
     name: 'Serenity Spa & Wellness',
     category: 'Salon & Spa',
@@ -262,6 +288,8 @@ export const businesses: Business[] = [
     createdAt: '2024-09-07T09:15:00Z',
   },
   {
+    provider: 'dummy',
+    providerId: 'dummy',
     id: 'biz-014',
     name: 'Metro Real Estate',
     category: 'Real Estate',
@@ -283,6 +311,8 @@ export const businesses: Business[] = [
     createdAt: '2024-09-07T14:20:00Z',
   },
   {
+    provider: 'dummy',
+    providerId: 'dummy',
     id: 'biz-015',
     name: 'Fresh Basket Retail',
     category: 'Retail Store',
@@ -299,6 +329,8 @@ export const businesses: Business[] = [
     createdAt: '2024-09-08T08:30:00Z',
   },
   {
+    provider: 'dummy',
+    providerId: 'dummy',
     id: 'biz-016',
     name: 'Curry House Kitchen',
     category: 'Restaurant',
@@ -320,6 +352,8 @@ export const businesses: Business[] = [
     createdAt: '2024-09-08T11:00:00Z',
   },
   {
+    provider: 'dummy',
+    providerId: 'dummy',
     id: 'biz-017',
     name: 'SmileCare Dental Clinic',
     category: 'Clinic',
@@ -341,6 +375,8 @@ export const businesses: Business[] = [
     createdAt: '2024-09-09T09:45:00Z',
   },
   {
+    provider: 'dummy',
+    providerId: 'dummy',
     id: 'biz-018',
     name: 'Zenith Professional Services',
     category: 'Professional Services',
@@ -362,6 +398,8 @@ export const businesses: Business[] = [
     createdAt: '2024-09-09T15:30:00Z',
   },
   {
+    provider: 'dummy',
+    providerId: 'dummy',
     id: 'biz-019',
     name: 'Krishna Yoga Studio',
     category: 'Gym & Fitness',
@@ -378,6 +416,8 @@ export const businesses: Business[] = [
     createdAt: '2024-09-10T08:00:00Z',
   },
   {
+    provider: 'dummy',
+    providerId: 'dummy',
     id: 'biz-020',
     name: 'Grandeur Banquets',
     category: 'Hotel & Hospitality',
